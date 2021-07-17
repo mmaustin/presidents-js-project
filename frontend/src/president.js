@@ -31,4 +31,14 @@ class President {
 
     }
 
+    static presidentialForm(){
+        President.presidentForm.innerHTML += `
+        <form id="president-form-inner">
+            New President<br>
+            Name: <input type="text" id="name"><br>
+            Submit: <input type="submit" id="create">
+        </form>
+        `
+    }
+
 }
