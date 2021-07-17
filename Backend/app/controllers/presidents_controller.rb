@@ -5,7 +5,7 @@ class PresidentsController < ApplicationController
   def index
     @presidents = President.all
 
-    render json: @presidents
+    render json: @presidents.to_json(include: [:achievements], except: [:created_at, :updated_at])
   end
 
   # GET /presidents/1
