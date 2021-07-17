@@ -3,8 +3,8 @@ const presidentService = new PresidentService(base_url)
 presidentService.getPresidents()
 President.presidentialForm()
 
-//const achievementService = new AchievementService(base_url)
-//achievementService.getAchievements()
+const achievementService = new AchievementService(base_url)
+achievementService.getAchievements()
 
 President.presidentForm.addEventListener('submit', handleSubmit)
 

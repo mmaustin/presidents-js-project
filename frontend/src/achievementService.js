@@ -11,6 +11,7 @@ class AchievementService {
             for(const achievement of achievements){
                 console.log(achievement)
                 const a = new Achievement(achievement)
+                console.log(a)
             }
         })
     }
