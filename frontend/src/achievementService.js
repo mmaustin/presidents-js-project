@@ -1,12 +1,18 @@
-class Achievement {
-    static all = []
-    constructor({id, title, year, president_id}){
-        this.id = id
-        this.title = title
-        this.year = year
-        this.president_id = president_id
 
-        Achievement.all.push(this)
-
+class AchievementService {
+    constructor(endpoint){
+        this.endpoint = endpoint
     }
+
+    getAchievements(){
+        fetch(`${this.endpoint}/achievements`)
+        .then(resp => resp.json())
+        .then(achievements => {
+            for(const achievement of achievements){
+                console.log(achievement)
+                const a = new Achievement(achievement)
+            }
+        })
+    }
+
 }
