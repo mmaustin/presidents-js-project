@@ -6,18 +6,19 @@ body {
     flex-flow: row wrap; 
 }
 
-li, form {
+li {
     color: red;
 }
 
 .border {
-    width: 33%;
-    height: 300px;
-    border: 1px solid blue;
+    width: 31%;
+    height: 350px;
     /*border-top: 1px solid blue;
     border-bottom: 1px solid blue;*/
     background-color: bisque;
-    /*border: 2px dotted blue;*/
+    /*border: 2px dotted blue;
+    box-shadow: 10px 10px red; */
+    margin-bottom: 30px;
 }
 
 #presidents-container, #president-form, h3 {
@@ -63,4 +64,18 @@ li {
     justify-content: space-between;
     align-items: center;
     flex-flow: row wrap;
+}
+
+#presidents-container {
+    justify-content: space-between;
+}
+
+/*#president-form {
+    margin-top: 30px;
+}*/
+
+#p-one {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
 }
