@@ -24,8 +24,8 @@ document.body.addEventListener( 'click',   function(event)  {
     event.preventDefault
     if( event.target.id == 'achievement-form' ) {
       const achievementObj = {
-        title: event.target.children[0].value,
-        year: event.target.children[2].value,
+        title: event.target.children[1].value,
+        year: event.target.children[3].value,
         president_id: event.target.parentElement.id
     }
 
@@ -44,7 +44,7 @@ document.body.addEventListener( 'click',   function(event)  {
           const a = new Achievement(achievement)
         
       }
-  })
+  }) 
 
     };
   } )  
