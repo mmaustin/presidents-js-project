@@ -1,6 +1,8 @@
 const base_url = "http://127.0.0.1:3000"
 const presidentService = new PresidentService(base_url)
+//console.log("a")
 presidentService.getPresidents()
+//console.log('b')
 President.presidentialForm()
 
 const achievementService = new AchievementService(base_url)
@@ -9,8 +11,10 @@ achievementService.getAchievements()
 President.presidentForm.addEventListener('submit', handleSubmit)
 
 function handleSubmit(event){
-  event.preventDefault
+  //debugger
+  event.preventDefault()
   presidentService.createPresident()
+  event.target.reset()
 }
 
 document.body.addEventListener( 'click',   function(event)  {
@@ -21,7 +25,8 @@ document.body.addEventListener( 'click',   function(event)  {
   } )
 
   document.body.addEventListener( 'submit',   function(event)  {
-    event.preventDefault
+    //debugger
+    event.preventDefault()
     if( event.target.id == 'achievement-form' ) {
       const achievementObj = {
         title: event.target.children[1].value,
@@ -39,11 +44,12 @@ document.body.addEventListener( 'click',   function(event)  {
 
   fetch(base_url + '/' + 'achievements', configObj)
   .then(resp => resp.json())
-  .then(achievements => {
-      for(const achievement of achievements){
+  .then(achievement => {
+    //debugger
+      //for(const achievement of achievements){
           const a = new Achievement(achievement)
         
-      }
+      //}
   }) 
 
     };
@@ -54,7 +60,7 @@ document.body.addEventListener( 'click',   function(event)  {
         event.target.style.color = "blue";
     }
 
-    setTimeout(function() {
+    setTimeout(() => {
       event.target.style.color = "";
     }, 1000)
   })
