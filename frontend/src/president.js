@@ -17,9 +17,11 @@ class President {
         let string = ""
         if (this.achievements !== undefined){
         this.achievements.forEach(a => {
-            string += `<li id="list-item" data-achievement-id="${a.id}">${a.title}
+            //string += `<li id="list-item" data-achievement-id="${a.id}">${a.title}
+            string += `<li id="list-item-${a.id}" data-achievement-id="${a.id}">${a.title}
             <button type="button" id="a-delete-bttn">Delete</button> </li>`
         })}
+        /*
         President.presidentsContainer.innerHTML += `
         <div id="${this.id}" class="border"><p id="p-one">${this.name}</p><p id="p-two">Achievements:</p>
         <ul>${string}</ul><form id="achievement-form">
@@ -31,9 +33,22 @@ class President {
         Remove President: <button type="button" id="delete-bttn">Delete</button>
         </div>
         `
-        /*insertAdjacentHTML look up
-        https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-https://dev.to/jeannienguyen/insertadjacenthtml-vs-innerhtml-4epd */
+        */
+        
+        President.presidentsContainer.insertAdjacentHTML('beforeend', `<div id="${this.id}" class="border"></div>`)
+        let b = document.querySelector(`div [id="${this.id}"]`)
+        b.insertAdjacentHTML('afterbegin', `<p>${this.name}</p>`)
+        //President.prezContainer.insertAdjacentHTML('beforeend', `<p>${this.name}</p>`)
+        b.insertAdjacentHTML('beforeend', '<p>Achievements</p>')
+        b.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}</ul>`)
+        b.insertAdjacentHTML('beforeend', `<form id="achievement-form-${this.id}" class="achievement-form"></form>`)
+        //Title: <input type="text" id="title"><br>Year: <input type="number" id="year"><br>Legislation: <input type="text" id="legislation"><br><input type="submit" id="achievement"><br></form>
+        const g = document.querySelector(`#achievement-form-${this.id}`)
+        g.insertAdjacentHTML('beforeend', 'Add an achievement:<br> Title: <input type="text" id="title"><br>')
+        g.insertAdjacentHTML('beforeend', 'Year: <input type="number" id="year"><br>')
+        //g.insertAdjacentHTML('beforeend', 'Legislation: <input type="text" id="legislation"><br>')
+        g.insertAdjacentHTML('beforeend', '<input type="submit" id="achievement"><br>')
+        b.insertAdjacentHTML('beforeend', 'Remove President: <button type="button" id="delete-bttn">Delete</button>')
 
     }
 
