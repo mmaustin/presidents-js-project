@@ -38,13 +38,20 @@ https://dev.to/jeannienguyen/insertadjacenthtml-vs-innerhtml-4epd */
     }
 
     static presidentialForm(){
-        President.presidentForm.innerHTML += `
+        /*President.presidentForm.innerHTML += `
         <form id="president-form-inner">
             Add A New President Here:<br><br>
             Name: <input type="text" id="name">
             <input type="submit" id="create">
         </form>
         `
+        */
+
+        President.presidentForm.insertAdjacentHTML('beforeend', '<form id="president-form-inner"><br>New President<br></form>')
+        const f = document.querySelector('#president-form-inner')
+        f.insertAdjacentHTML('beforeend', 'Name: <input type="text" id="name"><br>')
+        f.insertAdjacentHTML('beforeend', 'Submit: <input type="submit" id="create"><br>')
+
     }
 
 }

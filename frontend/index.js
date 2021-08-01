@@ -11,7 +11,6 @@ achievementService.getAchievements()
 President.presidentForm.addEventListener('submit', handleSubmit)
 
 function handleSubmit(event){
-  //debugger
   event.preventDefault()
   presidentService.createPresident()
   event.target.reset()
@@ -27,7 +26,8 @@ document.body.addEventListener( 'click',   function(event)  {
   document.body.addEventListener( 'submit',   function(event)  {
     //debugger
     event.preventDefault()
-    if( event.target.id == 'achievement-form' ) {
+    if( event.target.id === 'achievement-form' ) {
+      //event.preventDefault();
       const achievementObj = {
         title: event.target.children[1].value,
         year: event.target.children[3].value,
@@ -45,15 +45,16 @@ document.body.addEventListener( 'click',   function(event)  {
   fetch(base_url + '/' + 'achievements', configObj)
   .then(resp => resp.json())
   .then(achievement => {
-    //debugger
+    debugger
       //for(const achievement of achievements){
           const a = new Achievement(achievement)
-        
       //}
   }) 
 
     };
   } )  
+
+  President.presidentForm.addEventListener('submit', handleSubmit)
 
   document.body.addEventListener( 'mouseover',   function(event)  {
     if( event.target.id == 'list-item' ) {
