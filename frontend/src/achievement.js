@@ -10,9 +10,11 @@ class Achievement {
         Achievement.all.push(this)
     }
 
-    /*appendAchievement(){
-        Achievement.aForm.innerHTML += `
-        <p>${this.title} ${this.president}</p>
-        `
-    }*/
+    appendAchievement(){
+        const q = document.querySelector(`#ul-${this.president_id}`)
+        q.insertAdjacentHTML('beforeend', `<li id="list-item-${this.id}" data-achievement-id="${this.id}">${this.title}</li>`)
+        //const z = document.querySelector(`li [data-achievement-id="${this.id}"]`)
+        const z = document.querySelector(`#list-item-${this.id}`)
+        z.insertAdjacentHTML('beforeend', '<button type="button" id="a-delete-bttn">Delete</button>')
+    }
 }

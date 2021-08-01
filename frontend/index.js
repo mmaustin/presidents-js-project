@@ -26,7 +26,7 @@ document.body.addEventListener( 'click',   function(event)  {
   document.body.addEventListener( 'submit',   function(event)  {
     //debugger
     event.preventDefault()
-    if( event.target.id === 'achievement-form' ) {
+    if( event.target.children[1].id === 'title' ) {
       //event.preventDefault();
       const achievementObj = {
         title: event.target.children[1].value,
@@ -45,9 +45,11 @@ document.body.addEventListener( 'click',   function(event)  {
   fetch(base_url + '/' + 'achievements', configObj)
   .then(resp => resp.json())
   .then(achievement => {
-    debugger
+    //debugger
       //for(const achievement of achievements){
           const a = new Achievement(achievement)
+          a.appendAchievement()
+          event.target.reset()
       //}
   }) 
 
