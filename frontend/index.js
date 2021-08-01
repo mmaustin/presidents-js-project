@@ -27,7 +27,7 @@ document.body.addEventListener( 'click',   function(event)  {
     //debugger
     event.preventDefault()
     if( event.target.children[1].id === 'title' ) {
-      //event.preventDefault();
+      //debugger
       const achievementObj = {
         title: event.target.children[1].value,
         year: event.target.children[3].value,
@@ -58,15 +58,16 @@ document.body.addEventListener( 'click',   function(event)  {
 
   President.presidentForm.addEventListener('submit', handleSubmit)
 
-  document.body.addEventListener( 'mouseover',   function(event)  {
-    if( event.target.id == 'list-item' ) {
+  
+  /*document.body.addEventListener( 'mouseover',   function(event)  {
+    if( event.target.id == `list-item` ) {
         event.target.style.color = "blue";
     }
 
     setTimeout(() => {
       event.target.style.color = "";
     }, 1000)
-  })
+  })*/
 
   document.body.addEventListener( 'click',   function(event)  {
     if( event.target.id == 'a-delete-bttn' ) {

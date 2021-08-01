@@ -18,7 +18,7 @@ class President {
         if (this.achievements !== undefined){
         this.achievements.forEach(a => {
             //string += `<li id="list-item" data-achievement-id="${a.id}">${a.title}
-            string += `<li id="list-item-${a.id}" data-achievement-id="${a.id}">${a.title}
+            string += `<li id="list-item-${a.id}" class="make-blue" data-achievement-id="${a.id}">${a.title}
             <button type="button" id="a-delete-bttn">Delete</button> </li>`
         })}
         /*
@@ -36,10 +36,10 @@ class President {
         */
         
         President.presidentsContainer.insertAdjacentHTML('beforeend', `<div id="${this.id}" class="border"></div>`)
-        let b = document.querySelector(`div [id="${this.id}"]`)
-        b.insertAdjacentHTML('afterbegin', `<p>${this.name}</p>`)
+        const b = document.querySelector(`div [id="${this.id}"]`)
+        b.insertAdjacentHTML('afterbegin', `<p class="p-one">${this.name}</p>`)
         //President.prezContainer.insertAdjacentHTML('beforeend', `<p>${this.name}</p>`)
-        b.insertAdjacentHTML('beforeend', '<p>Achievements</p>')
+        b.insertAdjacentHTML('beforeend', '<p class="p-two">Achievements</p>')
         b.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}</ul>`)
         b.insertAdjacentHTML('beforeend', `<form id="achievement-form-${this.id}" class="achievement-form"></form>`)
         //Title: <input type="text" id="title"><br>Year: <input type="number" id="year"><br>Legislation: <input type="text" id="legislation"><br><input type="submit" id="achievement"><br></form>
