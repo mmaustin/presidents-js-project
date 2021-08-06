@@ -9,15 +9,33 @@ class President {
         this.achievements = achievements
 
         President.all.push(this)
-
+        
     }
+
+
+    //handleSort = (e) => {debugger}
+    //code wars, leet code, locale compare method
 
     appendToDom(){
         let string = ""
+        this.handleSort = function(e){
+            let g = document.querySelector(`#ul-${this.id}`)
+            g.innerHTML = ""
+            this.achievements.forEach(ach => {
+            g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
+            <button type="button" id="a-delete-bttn">Delete</button> </li>
+            `
+            })
+        }
+        this.handleSort = this.handleSort.bind(this)
+        //debugger
         if (this.achievements !== undefined){
         this.achievements.forEach(a => {
             string += `<li id="list-item-${a.id}" class="make-color" data-achievement-id="${a.id}">${a.title}
             <button type="button" id="a-delete-bttn">Delete</button> </li>`
+            //let achieve = []
+            //achieve.push(`${a.title}`)
+            //console.log(achieve)
         })}
 
         
@@ -25,15 +43,25 @@ class President {
         const presidentDiv = document.querySelector(`div [id="${this.id}"]`)
         presidentDiv.insertAdjacentHTML('afterbegin', `<p class="p-one">${this.name}</p>`)
         presidentDiv.insertAdjacentHTML('beforeend', '<p class="p-two">Achievements</p>')
-        presidentDiv.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}</ul>`)
+        presidentDiv.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}<button type="button" id="sort-button-${this.id}"></button></ul>`)
         presidentDiv.insertAdjacentHTML('beforeend', `<form id="achievement-form-${this.id}" class="achievement-form"></form>`)
-        const g = document.querySelector(`#achievement-form-${this.id}`)
-        g.insertAdjacentHTML('beforeend', 'Add an achievement:<br> Title: <input type="text" id="title"><br>')
-        g.insertAdjacentHTML('beforeend', 'Year: <input type="number" id="year"><br>')
-        g.insertAdjacentHTML('beforeend', '<input type="submit" id="achievement"><br>')
+        const achievementForm = document.querySelector(`#achievement-form-${this.id}`)
+        achievementForm.insertAdjacentHTML('beforeend', 'Add an achievement:<br> Title: <input type="text" id="title"><br>')
+        achievementForm.insertAdjacentHTML('beforeend', 'Year: <input type="number" id="year"><br>')
+        achievementForm.insertAdjacentHTML('beforeend', '<input type="submit" id="achievement"><br>')
         presidentDiv.insertAdjacentHTML('beforeend', 'Remove President: <button type="button" id="delete-bttn">Delete</button>')
 
+        
+        document.querySelector(`#sort-button-${this.id}`).addEventListener('click', this.handleSort) 
+
+        //this.handleSort = function(e){
+        //    console.log(e)
+        //}
+        //this.handleSort = this.handleSort.bind(this)
+        //debugger
     }
+
+    //document.querySelector(`#sort-button-${this.id}`)
 
     static presidentialForm(){
 

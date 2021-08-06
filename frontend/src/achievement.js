@@ -16,4 +16,8 @@ class Achievement {
         const listItem = document.querySelector(`#list-item-${this.id}`)
         listItem.insertAdjacentHTML('beforeend', '<button type="button" id="a-delete-bttn">Delete</button>')
     }
+
+    sortAchievements(){
+        
+    }
 }
