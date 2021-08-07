@@ -20,7 +20,19 @@ class President {
         let string = ""
         this.handleSort = function(e){
             let g = document.querySelector(`#ul-${this.id}`)
-            debugger
+            let storage = []
+            for (let a of g.children){
+                storage.push({title: a.innerHTML, id: a.attributes.id.value})
+            }
+                g.innerHTML = ""
+                let localeArray = storage.sort((a,b) => a.title.localeCompare(b.title, 'en'))
+                localeArray.forEach(ach => {
+                    let x = `${ach.id}`.split("-")
+                    g.innerHTML += `<li id="${ach.id}" class="make-color" data-achievement-id="${x[2]}">${ach.title}
+                    </li>
+                    `
+                })
+            /*
             g.innerHTML = ""
             const achArray = this.achievements.map(a => {return {title: a.title, id: a.id} })
             let localeArray = achArray.sort((a, b) => a.title.localeCompare(b.title, 'en'))
@@ -28,7 +40,8 @@ class President {
                 g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
                 <button type="button" id="a-delete-bttn">Delete</button> </li>
                 `
-                })
+                //<li id="list-item-${ach.id}"  data-achievement-id="${ach.id}"
+                })*/
 
             /*localeArray.forEach(ach => {
             g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
