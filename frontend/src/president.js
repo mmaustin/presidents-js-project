@@ -20,12 +20,21 @@ class President {
         let string = ""
         this.handleSort = function(e){
             let g = document.querySelector(`#ul-${this.id}`)
+            debugger
             g.innerHTML = ""
-            this.achievements.forEach(ach => {
+            const achArray = this.achievements.map(a => {return {title: a.title, id: a.id} })
+            let localeArray = achArray.sort((a, b) => a.title.localeCompare(b.title, 'en'))
+            localeArray.forEach(ach => {
+                g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
+                <button type="button" id="a-delete-bttn">Delete</button> </li>
+                `
+                })
+
+            /*localeArray.forEach(ach => {
             g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
             <button type="button" id="a-delete-bttn">Delete</button> </li>
             `
-            })
+            })*/
         }
         this.handleSort = this.handleSort.bind(this)
         //debugger
@@ -33,9 +42,6 @@ class President {
         this.achievements.forEach(a => {
             string += `<li id="list-item-${a.id}" class="make-color" data-achievement-id="${a.id}">${a.title}
             <button type="button" id="a-delete-bttn">Delete</button> </li>`
-            //let achieve = []
-            //achieve.push(`${a.title}`)
-            //console.log(achieve)
         })}
 
         
@@ -43,7 +49,8 @@ class President {
         const presidentDiv = document.querySelector(`div [id="${this.id}"]`)
         presidentDiv.insertAdjacentHTML('afterbegin', `<p class="p-one">${this.name}</p>`)
         presidentDiv.insertAdjacentHTML('beforeend', '<p class="p-two">Achievements</p>')
-        presidentDiv.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}<button type="button" id="sort-button-${this.id}"></button></ul>`)
+        presidentDiv.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}</ul>`)//<button type="button" id="sort-button-${this.id}"></button></ul>`)
+        presidentDiv.insertAdjacentHTML('beforeend', `<button type="button" id="sort-button-${this.id}">Sort</button>`)
         presidentDiv.insertAdjacentHTML('beforeend', `<form id="achievement-form-${this.id}" class="achievement-form"></form>`)
         const achievementForm = document.querySelector(`#achievement-form-${this.id}`)
         achievementForm.insertAdjacentHTML('beforeend', 'Add an achievement:<br> Title: <input type="text" id="title"><br>')
