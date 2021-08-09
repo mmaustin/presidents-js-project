@@ -13,44 +13,25 @@ class President {
     }
 
 
-    //handleSort = (e) => {debugger}
-    //code wars, leet code, locale compare method
-
     appendToDom(){
         let string = ""
         this.handleSort = function(e){
-            let g = document.querySelector(`#ul-${this.id}`)
-            let storage = []
-            for (let a of g.children){
-                storage.push({title: a.innerHTML, id: a.attributes.id.value})
+            let ul = document.querySelector(`#ul-${this.id}`)
+            let listStorage = []
+            for (let list of ul.children){
+                listStorage.push({title: list.innerHTML, id: list.attributes.id.value})
             }
-                g.innerHTML = ""
-                let localeArray = storage.sort((a,b) => a.title.localeCompare(b.title, 'en'))
+                ul.innerHTML = ""
+                let localeArray = listStorage.sort((a,b) => a.title.localeCompare(b.title, 'en'))
                 localeArray.forEach(ach => {
-                    let x = `${ach.id}`.split("-")
-                    g.innerHTML += `<li id="${ach.id}" class="make-color" data-achievement-id="${x[2]}">${ach.title}
+                    let dataAchId = `${ach.id}`.split("-")
+                    ul.innerHTML += `<li id="${ach.id}" class="make-color" data-achievement-id="${dataAchId[2]}">${ach.title}
                     </li>
                     `
                 })
-            /*
-            g.innerHTML = ""
-            const achArray = this.achievements.map(a => {return {title: a.title, id: a.id} })
-            let localeArray = achArray.sort((a, b) => a.title.localeCompare(b.title, 'en'))
-            localeArray.forEach(ach => {
-                g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
-                <button type="button" id="a-delete-bttn">Delete</button> </li>
-                `
-                //<li id="list-item-${ach.id}"  data-achievement-id="${ach.id}"
-                })*/
 
-            /*localeArray.forEach(ach => {
-            g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
-            <button type="button" id="a-delete-bttn">Delete</button> </li>
-            `
-            })*/
         }
         this.handleSort = this.handleSort.bind(this)
-        //debugger
         if (this.achievements !== undefined){
         this.achievements.forEach(a => {
             string += `<li id="list-item-${a.id}" class="make-color" data-achievement-id="${a.id}">${a.title}
@@ -62,7 +43,7 @@ class President {
         const presidentDiv = document.querySelector(`div [id="${this.id}"]`)
         presidentDiv.insertAdjacentHTML('afterbegin', `<p class="p-one">${this.name}</p>`)
         presidentDiv.insertAdjacentHTML('beforeend', '<p class="p-two">Achievements</p>')
-        presidentDiv.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}</ul>`)//<button type="button" id="sort-button-${this.id}"></button></ul>`)
+        presidentDiv.insertAdjacentHTML('beforeend', `<ul id="ul-${this.id}">${string}</ul>`)
         presidentDiv.insertAdjacentHTML('beforeend', `<button type="button" id="sort-button-${this.id}">Sort</button>`)
         presidentDiv.insertAdjacentHTML('beforeend', `<form id="achievement-form-${this.id}" class="achievement-form"></form>`)
         const achievementForm = document.querySelector(`#achievement-form-${this.id}`)
@@ -74,14 +55,7 @@ class President {
         
         document.querySelector(`#sort-button-${this.id}`).addEventListener('click', this.handleSort) 
 
-        //this.handleSort = function(e){
-        //    console.log(e)
-        //}
-        //this.handleSort = this.handleSort.bind(this)
-        //debugger
     }
-
-    //document.querySelector(`#sort-button-${this.id}`)
 
     static presidentialForm(){
 
@@ -118,3 +92,20 @@ class President {
         </form>
         `
         */
+
+                    /*
+            g.innerHTML = ""
+            const achArray = this.achievements.map(a => {return {title: a.title, id: a.id} })
+            let localeArray = achArray.sort((a, b) => a.title.localeCompare(b.title, 'en'))
+            localeArray.forEach(ach => {
+                g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
+                <button type="button" id="a-delete-bttn">Delete</button> </li>
+                `
+                //<li id="list-item-${ach.id}"  data-achievement-id="${ach.id}"
+                })*/
+
+            /*localeArray.forEach(ach => {
+            g.innerHTML += `<li id="list-item-${ach.id}" class="make-color" data-achievement-id="${ach.id}">${ach.title}
+            <button type="button" id="a-delete-bttn">Delete</button> </li>
+            `
+            })*/
